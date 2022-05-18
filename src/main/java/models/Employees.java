@@ -2,14 +2,14 @@ package models;
 
 import java.util.Objects;
 
-public class Users {
+public class Employees {
     private  int id;
     private String name;
     private String position;
     private String email;
     private String departmentId;
 
-    public Users(String name, String position, String email, String departmentId) {
+    public Employees(String name, String position, String email, String departmentId) {
         this.name = name;
         this.position = position;
         this.email = email;
@@ -59,8 +59,8 @@ public class Users {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Users)) return false;
-        Users users = (Users) o;
+        if (!(o instanceof Employees)) return false;
+        Employees users = (Employees) o;
         return getId() == users.getId() && getName().equals(users.getName()) && getPosition().equals(users.getPosition()) && getEmail().equals(users.getEmail()) && getDepartmentId().equals(users.getDepartmentId());
     }
 
