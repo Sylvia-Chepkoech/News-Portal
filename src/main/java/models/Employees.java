@@ -7,9 +7,9 @@ public class Employees {
     private String name;
     private String position;
     private String email;
-    private String departmentId;
+    private int departmentId;
 
-    public Employees(String name, String position, String email, String departmentId) {
+    public Employees(String name, String position, String email, int departmentId) {
         this.name = name;
         this.position = position;
         this.email = email;
@@ -48,11 +48,11 @@ public class Employees {
         this.email = email;
     }
 
-    public String getDepartmentId() {
+    public int getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(String departmentId) {
+    public void setDepartmentId(int departmentId) {
         this.departmentId = departmentId;
     }
 
@@ -61,7 +61,7 @@ public class Employees {
         if (this == o) return true;
         if (!(o instanceof Employees)) return false;
         Employees users = (Employees) o;
-        return getId() == users.getId() && getName().equals(users.getName()) && getPosition().equals(users.getPosition()) && getEmail().equals(users.getEmail()) && getDepartmentId().equals(users.getDepartmentId());
+        return getId() == users.getId() && getName().equals(users.getName()) && getPosition().equals(users.getPosition()) && getEmail().equals(users.getEmail()) && getDepartmentId() == (users.getDepartmentId());
     }
 
     @Override
