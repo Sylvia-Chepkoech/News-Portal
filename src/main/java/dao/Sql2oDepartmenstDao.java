@@ -41,6 +41,7 @@ public class Sql2oDepartmenstDao implements DepartmentsDao {
 
     }
 
+
     @Override
     public List<Departments> getAll() {
         getDrivers();
