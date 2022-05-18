@@ -4,21 +4,21 @@ CREATE DATABASE news_portal;
 \c news_portal
 
 CREATE TABLE IF NOT EXISTS departments (
- id int PRIMARY KEY auto_increment,
+ id serial PRIMARY KEY,
  departmentName VARCHAR,
  description VARCHAR,
  numberOfEmployees VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS news (
- id int PRIMARY KEY auto_increment,
+ id serial PRIMARY KEY,
  heading VARCHAR,
  context VARCHAR,
  departmentId INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS employees (
- id int PRIMARY KEY auto_increment,
+ id serial PRIMARY KEY,
  name VARCHAR,
  position VARCHAR,
  email VARCHAR,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS employees (
 );
 
  CREATE TABLE IF NOT EXISTS departments_employees (
- id int PRIMARY KEY auto_increment,
+ id serial PRIMARY KEY,
  employeeid INTEGER,
  departmentid INTEGER
 );
