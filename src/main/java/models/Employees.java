@@ -3,7 +3,7 @@ package models;
 import java.util.Objects;
 
 public class Employees {
-    private  int id;
+    private int id;
     private String name;
     private String position;
     private String email;
@@ -60,12 +60,12 @@ public class Employees {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employees)) return false;
-        Employees users = (Employees) o;
-        return getId() == users.getId() && getName().equals(users.getName()) && getPosition().equals(users.getPosition()) && getEmail().equals(users.getEmail()) && getDepartmentId() == (users.getDepartmentId());
+        Employees employees = (Employees) o;
+        return getDepartmentId() == employees.getDepartmentId() && getName().equals(employees.getName()) && getPosition().equals(employees.getPosition()) && getEmail().equals(employees.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getPosition(), getEmail(), getDepartmentId());
+        return Objects.hash(getName(), getPosition(), getEmail(), getDepartmentId());
     }
 }

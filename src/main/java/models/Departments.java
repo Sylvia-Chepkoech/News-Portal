@@ -51,11 +51,11 @@ public class Departments {
         if (this == o) return true;
         if (!(o instanceof Departments)) return false;
         Departments that = (Departments) o;
-        return getId() == that.getId() && getNumberOfEmployees() == that.getNumberOfEmployees() && getDepartmentName().equals(that.getDepartmentName()) && getDescription().equals(that.getDescription());
+        return getNumberOfEmployees() == that.getNumberOfEmployees() && getDepartmentName().equals(that.getDepartmentName()) && getDescription().equals(that.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDepartmentName(), getDescription(), getNumberOfEmployees());
+        return Objects.hash(getDepartmentName(), getDescription(), getNumberOfEmployees());
     }
 }

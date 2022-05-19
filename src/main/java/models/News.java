@@ -56,11 +56,11 @@ public class News {
         if (this == o) return true;
         if (!(o instanceof News)) return false;
         News news = (News) o;
-        return getId() == news.getId() && getDepartmentId() == news.getDepartmentId() && getHeading().equals(news.getHeading()) && getContext().equals(news.getContext());
+        return getDepartmentId() == news.getDepartmentId() && getHeading().equals(news.getHeading()) && getContext().equals(news.getContext());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getHeading(), getContext(), getDepartmentId());
+        return Objects.hash(getHeading(), getContext(), getDepartmentId());
     }
 }
