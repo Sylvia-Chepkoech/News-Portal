@@ -46,32 +46,84 @@ public class App {
         }));
 
         //find employees by Id
-
-
+        get("/employee/:id", "application/json", ((request, response) -> {
+         int employeeId = Integer.parseInt(request.params("id"));
+         Employees user = sql2oEmployeesDao.findById(employeeId);
+         if (user != null){
+             response.status(201);
+             return gson.toJson(user);
+         }else {
+             throw new ApiException(String.format("No Employee with the id: \"%s\" exists", request.params("id")), 404);
+         }
+    }));
 
         //create new department
+        post("/department/new", "application/json", ((request, response) -> {
+
+            Departments sections = gson.fromJson(request.body(),Departments.class);
+
+            if (sections == null){
+                throw new ApiException("Please do not leave empty fields", 404);
+
+            } else if(sections.getDepartmentName().equals("") || sections.getDescription().equals("")){
+                throw new ApiException("Please do not leave empty fields", 404);
+
+            }else if (sql2oDepartmentsDao.getAll().contains(sections)){
+                throw new ApiException("The department already exist", 404);
+
+            }
+            else {sql2oDepartmentsDao.add(sections);
+                response.status(201);
+                return gson.toJson(sections);}
+        }));
 
 
         //list all departments
         get("/department", "application/json", ((request, response) -> {
-            List<Departments> sectors = sql2oDepartmentsDao.getAll();
-            response.status(200);
-            return gson.toJson(sectors);
+                    List<Departments> sectors = sql2oDepartmentsDao.getAll();
+                    response.status(200);
+                    return gson.toJson(sectors);
+                }));
 
         //Find employees in a department
+        get("/employee/:id", "application/json", ((request, response) -> {
+            int employeeId = Integer.parseInt(request.params("id"));
+            Employees user = sql2oEmployeesDao.findById(employeeId);
+            if (user != null){
+                response.status(201);
+                return gson.toJson(user);
+            }else {
+                throw new ApiException(String.format("No Employee with the id: \"%s\" exists", request.params("id")), 404);
+            }
+        }));
 
         //Create news
+        post("/report/new", "application/json", ((request, response) -> {
 
+            News report = gson.fromJson(request.body(), News.class);
 
+            if (report == null){
+                throw new ApiException("Please do not leave empty fields", 404);
 
-        //Create news
+            } else if(report.getContext().equals("") || report.getHeading().equals("")){
+                throw new ApiException("Please do not leave empty fields", 404);
+
+            }else if (sql2oNewsDao.getAll().contains(report)){
+                throw new ApiException("This news already exist", 404);
+
+            }
+            else {sql2oNewsDao.add(report);
+                response.status(201);
+                return gson.toJson(report);}
+        }));
 
 
         //list all news
-            get("/news", "application/json", ((request, response) -> {
-                List<News> reports  = sql2oNewsDao.getAll();
+            get("/news", "application/json", (request, response) -> {
+                List<News> reports = sql2oNewsDao.getAll();
                 response.status(200);
-                return gson.toJson(reports);
+                        return gson.toJson(reports);
+                    });
 
         //list news in a department
 
@@ -91,4 +143,5 @@ public class App {
 
         after((req,res)-> res.type("application/json"));
     }
-}
+        }
+
