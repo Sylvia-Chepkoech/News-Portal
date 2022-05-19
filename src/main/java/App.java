@@ -38,57 +38,57 @@ public class App {
             }
         }));
 
-//        //list all employees
-//        get("/employee", "application/json", ((request, response) -> {
-//            List<Employees> users = sql2oEmployeesDao.getAll();
-//            response.status(200);
-//            return gson.toJson(users);
-//        }));
-//
-//        //find employees by Id
-//
-//
-//
-//        //create new department
-//
-//
-//        //list all departments
-//        get("/department", "application/json", ((request, response) -> {
-//            List<Departments> sectors = sql2oDepartmentsDao.getAll();
-//            response.status(200);
-//            return gson.toJson(sectors);
-//
-//        //Find employees in a department
-//
-//        //Create news
-//
-//
-//
-//        //Create news
-//
-//
-//        //list all news
-//            get("/news", "application/json", ((request, response) -> {
-//                List<News> reports  = sql2oNewsDao.getAll();
-//                response.status(200);
-//                return gson.toJson(reports);
-//
-//        //list news in a department
-//
-//
-//
-//
-//
-//
-//        exception(ApiException.class, (exc, req, res) -> {
-//            Map<String, Object> jsonMap = new HashMap<>();
-//            jsonMap.put("status", ((ApiException) exc).getStatusCode());
-//            jsonMap.put("errorMessage", ((ApiException) exc).getMessage());
-//            res.type("application/json"); //after does not run in case of an exception.
-//            res.status(((ApiException) exc).getStatusCode()); //set the status
-//            res.body(gson.toJson(jsonMap));  //set the output.
-//        });
-//
-//        after((req,res)-> res.type("application/json"));
-//    }
-//}
+        //list all employees
+        get("/employee", "application/json", ((request, response) -> {
+            List<Employees> users = sql2oEmployeesDao.getAll();
+            response.status(200);
+            return gson.toJson(users);
+        }));
+
+        //find employees by Id
+
+
+
+        //create new department
+
+
+        //list all departments
+        get("/department", "application/json", ((request, response) -> {
+            List<Departments> sectors = sql2oDepartmentsDao.getAll();
+            response.status(200);
+            return gson.toJson(sectors);
+
+        //Find employees in a department
+
+        //Create news
+
+
+
+        //Create news
+
+
+        //list all news
+            get("/news", "application/json", ((request, response) -> {
+                List<News> reports  = sql2oNewsDao.getAll();
+                response.status(200);
+                return gson.toJson(reports);
+
+        //list news in a department
+
+
+
+
+
+
+        exception(ApiException.class, (exc, req, res) -> {
+            Map<String, Object> jsonMap = new HashMap<>();
+            jsonMap.put("status", ((ApiException) exc).getStatusCode());
+            jsonMap.put("errorMessage", ((ApiException) exc).getMessage());
+            res.type("application/json"); //after does not run in case of an exception.
+            res.status(((ApiException) exc).getStatusCode()); //set the status
+            res.body(gson.toJson(jsonMap));  //set the output.
+        });
+
+        after((req,res)-> res.type("application/json"));
+    }
+}
