@@ -85,17 +85,11 @@ public class App {
                     return gson.toJson(sectors);
                 }));
 
-        //Find employees in a department
-        get("/employee/:id", "application/json", ((request, response) -> {
-            int employeeId = Integer.parseInt(request.params("id"));
-            Employees user = sql2oEmployeesDao.findById(employeeId);
-            if (user != null){
-                response.status(201);
-                return gson.toJson(user);
-            }else {
-                throw new ApiException(String.format("No Employee with the id: \"%s\" exists", request.params("id")), 404);
-            }
-        }));
+//        //Find employees in a department
+//        get("/departments/:departmentId/employees", "application/json", (request, response) -> {
+//            int departmentId = Integer.parseInt(request.params("departmentId"));
+//            return  gson.toJson(sql2oDepartmentsDao.getAll(departmentId));
+//        });
 
         //Create news
         post("/report/new", "application/json", ((request, response) -> {
